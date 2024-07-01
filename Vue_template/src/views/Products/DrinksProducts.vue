@@ -1,12 +1,13 @@
 <template>
     <div>
       <NavBar />
-      <div>
-        <div v-for="(item, index) in products" :key="index">
+      <div class="productsList" v-for="(item, index) in products" :key="index">
+        <div class="product">
           <img :src=item.img>
           <p>{{ item.name }}</p>
           <p>{{ item.price }}</p>
           <div>
+            <button class="btnBuy">Comprar</button>
             <button class="addCartProduct" @click.prevent="addCartStore(item)"></button>
           </div>
           </div>

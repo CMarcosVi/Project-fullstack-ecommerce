@@ -290,4 +290,36 @@ header nav {
     width: 20px;
     background-color: #00ff00;
     background-image: url("../assets/imgs/shoppingCartBlack.png");
+    background-size: 75% 75%; 
+    background: no-repeat center;
+}
+.productsList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.product{
+    height: 400px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #00ff00;
+}
+.btnBuy{
+    padding: 0rem .5rem;
+    background-color: none;
+    transition: .5s;
+    border-radius: 1rem;
+}
+.btnBuy:hover{
+    transition: .5s;
+    background-color: #00ff00;
+}
+.removeItem{
+    background-color: #f00;
+    border-radius: 1rem;
+    background-image: url("../assets/imgs/lixeira.png");
+    background-size: 75% 75%; 
+    background: no-repeat center;
 }
