@@ -77,6 +77,14 @@ const router = createRouter({
       path: '/:pathMatch(.*)',
       name: 'NotFoundComponent',
       component: () => import('../views/PageNotFound/PageNotFound.vue'),
+    },
+    {
+      path: '/produto/:tipo/:id',
+      name: 'Product',
+      component: () => {
+        import('../views/Products/BuyProduct.vue')
+      },
+      props: true
     }
   ]
 });

@@ -7,10 +7,12 @@
           <p>{{ item.name }}</p>
           <p>{{ item.price }}</p>
           <div>
-            <button class="btnBuy">Comprar</button>
-            <button class="addCartProduct" @click.prevent="addCartStore(item)"></button>
+            <RouterLink :to="{ name: 'ProdutoDetalhe', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>
+            <button class="addCartProduct" @click.prevent="addCartStore(item)">
+              <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
+            </button>
           </div>
-          </div>
+        </div>
       </div>
     </div>
 </template>
