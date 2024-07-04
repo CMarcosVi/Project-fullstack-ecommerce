@@ -12,7 +12,7 @@
             <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
           </button>
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </template>
