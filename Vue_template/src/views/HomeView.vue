@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { reactive, onMounted } from 'vue';
+import axios from 'axios';
+import { useCartStore } from "../stores/counter";
 import NavBar from '@/components/NavBar.vue';
-import { ref, onMounted } from 'vue';
-import axios, { AxiosResponse } from 'axios';
 
-// Define tipos para os produtos e para os dados buscados
+const cartStore = useCartStore();
+
 interface Product {
   id: number;
   name: string;
@@ -13,53 +15,60 @@ interface Product {
   quantity: number;
 }
 
-const products = ref<Product[]>([]);
-const fetchedData = ref<Product[][]>([]);
-
-const urls: string[] = [
-  'http://localhost:3000/computersListProducts',
-  'http://localhost:3000/drinksListProducts',
-  'http://localhost:3000/foodsListProducts',
-  'http://localhost:3000/gamesAndConsolesListProducts',
-  'http://localhost:3000/kitchenListProducts',
-  'http://localhost:3000/smartPhonesListProducts'
-];
-
-const fetchData = async () => {
+async function findProducts(categories: string[]): Promise<{ products: Product[] }> {
   try {
-    const requests = urls.map(url => axios.get<Product[]>(url));
-    const responses = await Promise.allSettled(requests);
-
-    // Filtra apenas as respostas bem-sucedidas
-    const successfulResponses = responses.filter(res => res.status === 'fulfilled') as PromiseFulfilledResult<AxiosResponse<Product[]>>[];
-
-    // Mapeia cada resposta para pegar apenas os produtos e armazena em fetchedData
-    fetchedData.value = successfulResponses.map(response => response.value.data);
-
-    // Concatena todos os produtos de todas as respostas em um único array
-    let allProducts: Product[] = [];
-    successfulResponses.forEach(response => {
-      allProducts = allProducts.concat(response.value.data);
+    const requests = categories.map(async (category) => {
+      const url = `http://localhost:3000/${category}ListProducts`;
+      const response = await axios.get<{ products: Product[] }>(url);
+      return response.data.products;
     });
 
-    // Atualiza a variável reativa products com todos os produtos
-    products.value = allProducts;
+    // Esperar que todas as requisições sejam completadas
+    const productsArrays = await Promise.all(requests);
 
-  } catch (err) {
-    console.error('Erro ao buscar dados:', err);
+    // Combina os arrays de produtos em um único array
+    const combinedProducts = productsArrays.reduce((acc, products) => [...acc, ...products], []);
+
+    return { products: combinedProducts };
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    throw error;
   }
-};
+}
 
-onMounted(() => {
-  fetchData();
+
+const state = reactive<{ products: Product[] }>({
+  products: []
 });
-</script>
 
+const addCartStore = (item: Product) => {
+  cartStore.addCart({ type: 'drinks', ...item });
+}
+
+onMounted(async () => {
+  try {
+    const categories = [
+      'drinks',
+      'foods',
+      'gamesAndConsoles',
+      'smartPhones'
+    ];
+
+    const fetchedProducts = await findProducts(categories);
+    state.products = fetchedProducts.products;
+    console.log(state.products); // Verifique se os dados são exibidos corretamente aqui
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+});
+
+</script>
 
 <template>
   <NavBar />
   <main class="homeView">
     <section class="extrasServices">
+      <!-- Links para outras seções -->
       <a href="" target="_blank" class="cardCriate">
         <h1>faça seu cartão agora <br> sem taxas e anuidades</h1>
       </a>
@@ -68,13 +77,15 @@ onMounted(() => {
       </a>
     </section>
     <section class="products">
-      <div>
-        <div v-for="(item, index) in products" :key="index">
-          <img :src=item.img>
+      <div class="productsList">
+        <div v-for="item in state.products" :key="item.id" class="productItem">
+          <img :src="item.img">
           <p>{{ item.name }}</p>
-          <p>{{ item.price }}</p>
+          <p>R${{ item.price }}.00</p>
           <div>
-            <RouterLink :to="{ name: 'ProdutoDetalhe', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>
+            <!-- Use RouterLink para navegação -->
+            <!--<RouterLink v-if="item.id" :to="{ name: 'ProdutoDetalhe', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>-->
+            <!-- Botão para adicionar ao carrinho -->
             <button class="addCartProduct" @click.prevent="addCartStore(item)">
               <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
             </button>

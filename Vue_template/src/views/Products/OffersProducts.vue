@@ -6,9 +6,9 @@ import navBar from '../../components/NavBar.vue';
     <div>
         <navBar />
         <div>
-            <div v-for="(item, index) in items">
-            <img :src="item.img" alt="">
-            <p>{{ item.name }}</p>
+            <div>
+            <img alt="">
+            <p></p>
             <div>
                 <a></a>
                 <button></button>

@@ -2,7 +2,6 @@ import User from '../../src/user/User.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import PasswordToken from '../../src/user/PasswordToken.js'
-import HomeController from '../controllers/HomeController.js';
 import sanitization from '../validator/sanitization.js';
 
 import * as dotenv from "dotenv";

@@ -28,11 +28,11 @@ const router = createRouter({
       name: 'RecoverPassword',
       component: () => import('../views/CreateRecoverLoginAccount/RecoverPassword.vue')
     },
-    {
+    /*{
       path: '/BestSellers',
       name: 'BestSellers',
-      component: () => import('../views/Products/BestSellers.vue')
-    },
+      component: () => import('../../src/views/Products/BestSellers.vue')
+    },*/
     {
       path: '/OffersProducts',
       name: 'OffersProducts',
@@ -81,10 +81,8 @@ const router = createRouter({
     {
       path: '/produto/:tipo/:id',
       name: 'Product',
-      component: () => {
-        import('../views/Products/BuyProduct.vue')
-      },
-      props: true
+      component: () => import('../views/Products/BuyProduct.vue'),
+        props: true
     }
   ]
 });
