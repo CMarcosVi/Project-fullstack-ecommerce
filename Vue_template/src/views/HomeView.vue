@@ -84,7 +84,7 @@ onMounted(async () => {
           <p>R${{ item.price }}.00</p>
           <div>
             <!-- Use RouterLink para navegação -->
-            <!--<RouterLink v-if="item.id" :to="{ name: 'ProdutoDetalhe', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>-->
+            <!--<RouterLink v-if="item.id" :to="{ name: 'Product', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>-->
             <!-- Botão para adicionar ao carrinho -->
             <button class="addCartProduct" @click.prevent="addCartStore(item)">
               <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
