@@ -82,12 +82,11 @@ onMounted(async () => {
           <img :src="item.img">
           <p>{{ item.name }}</p>
           <p>R${{ item.price }}.00</p>
-          <div>
+          <div class="btnsCardRedirect">
             <!-- Use RouterLink para navegação -->
-            <!--<RouterLink v-if="item.id" :to="{ name: 'Product', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>-->
+            <RouterLink class="btcRedirectLink" v-if="item.id" :to="{ name: 'Product', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>
             <!-- Botão para adicionar ao carrinho -->
-            <button class="addCartProduct" @click.prevent="addCartStore(item)">
-              <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
+            <button class="addCartProductBtn" @click.prevent="addCartStore(item)">
             </button>
           </div>
         </div>

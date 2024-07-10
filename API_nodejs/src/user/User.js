@@ -101,7 +101,18 @@ class User {
             console.log(err);
             return false;
         }
-
+    }
+    async findProductInTable(id,table){
+        try {
+            if (!id || !table) {
+                throw new Error('É necessário fornecer id e nome da tabela');
+              }
+            const result = await connectionProducts(table).select('*').where({ id }).first(); // Invocação correta do método first()
+            return { products: result }
+        }catch (err) {
+            console.log(err);
+            return false;
+        }
     }
 }
 

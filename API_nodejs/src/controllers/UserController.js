@@ -112,6 +112,22 @@ class UserController {
             res.status(500).json({ error: 'Erro ao buscar produtos de smartphones' });
           }
     }
+    async requestFoodProduct(req,res){
+        const id = req.params.id;
+        try{
+            if (id >= 13){
+                return res.status(404).json({error: 'Produto não encontrado'})
+            }
+            const result = await User.findProductInTable(id,'foods')
+            if (!result) {
+                return res.status(404).json({ error: 'Produto não encontrado' });
+            }
+            res.json(result)
+        } catch(error){
+            console.error('Produto não encontrado',error)
+            res.status(500).json({error: 'Erro ao buscar produto Food'})
+        }
+    }
     async requestSmartphones(req,res){
         try {
             const result = await User.findProducts('smartphones'); 
@@ -121,6 +137,22 @@ class UserController {
             res.status(500).json({ error: 'Erro ao buscar produtos de smartphones' });
           }
     }
+    async requestSmartphonesProduct(req,res){
+        const id = req.params.id;
+        try{
+            if (id >= 13){
+                return res.status(404).json({error: 'Produto não encontrado'})
+            }
+            const result = await User.findProductInTable(id,'smartphones')
+            if (!result) {
+                return res.status(404).json({ error: 'Produto não encontrado' });
+            }
+            res.json(result)
+        } catch(error){
+            console.error('Produto não encontrado',error)
+            res.status(500).json({error: 'Erro ao buscar produto Food'})
+        }
+    }
     async requestConsoles(req,res){
         try {
             const result = await User.findProducts('consoles'); 
@@ -129,6 +161,22 @@ class UserController {
             console.error('Erro ao buscar produtos de smartphones:', error);
             res.status(500).json({ error: 'Erro ao buscar produtos de smartphones' });
           }
+    }
+    async requestConsolesProduct(req,res){
+        const id = req.params.id;
+        try{
+            if (id >= 13){
+                return res.status(404).json({error: 'Produto não encontrado'})
+            }
+            const result = await User.findProductInTable(id,'consoles')
+            if (!result) {
+                return res.status(404).json({ error: 'Produto não encontrado' });
+            }
+            res.json(result)
+        } catch(error){
+            console.error('Produto não encontrado',error)
+            res.status(500).json({error: 'Erro ao buscar produto Food'})
+        }
     }
     async requestKitchen(req,res){
         try {
@@ -147,6 +195,22 @@ class UserController {
             console.error('Erro ao buscar produtos de smartphones:', error);
             res.status(500).json({ error: 'Erro ao buscar produtos de smartphones' });
           }
+    }
+    async requestConsolesProduct(req,res){
+        const id = req.params.id;
+        try{
+            if (id >= 13){
+                return res.status(404).json({error: 'Produto não encontrado'})
+            }
+            const result = await User.findProductInTable(id,'drinks')
+            if (!result) {
+                return res.status(404).json({ error: 'Produto não encontrado' });
+            }
+            res.json(result)
+        } catch(error){
+            console.error('Produto não encontrado',error)
+            res.status(500).json({error: 'Erro ao buscar produto Food'})
+        }
     }
     async requestComputers(req,res){
         try {

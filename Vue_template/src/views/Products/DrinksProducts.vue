@@ -7,10 +7,8 @@
           <p>{{ item.name }}</p>
           <p>{{ item.price }}</p>
           <div>
-            <RouterLink :to="{ name: 'ProdutoDetalhe', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>
-            <button class="addCartProduct" @click.prevent="addCartStore(item)">
-              <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
-            </button>
+            <RouterLink class="btcRedirectLink" v-if="item.id" :to="{ name: 'Product', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>
+            <button class="addCartProduct" @click.prevent="addCartStore(item)"></button>
           </div>
         </div>
       </div>
@@ -38,7 +36,7 @@
   };
 
   const addCartStore = (item : { id: number; name: string; img: string; type?: string; price: number; quantity: number; }) => {
-    cartStore.addCart({type: 'drinks', ...item});
+    cartStore.addCart({...item});
   }
   // Chama fetchData quando o componente é montado
   onMounted(() => {

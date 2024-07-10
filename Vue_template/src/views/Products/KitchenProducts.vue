@@ -8,9 +8,7 @@
         <p>{{ item.price }}</p>
         <div>
           <RouterLink :to="{ name: 'ProdutoDetalhe', params: { tipo: item.type || '', id: item.id.toString() } }">Comprar</RouterLink>
-          <button class="addCartProduct" @click.prevent="addCartStore(item)">
-            <img src="../../assets/imgs/shoppingCartBlack.png" alt="botão adicionar ao carrinho">
-          </button>
+          <button class="addCartProduct" @click.prevent="addCartStore(item)"></button>
         </div>
       </div>
     </div>

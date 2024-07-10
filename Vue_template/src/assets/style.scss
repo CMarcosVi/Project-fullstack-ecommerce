@@ -211,11 +211,13 @@ header nav {
 
 //Page-not-found
 .pageNotFound{
-    @include centralization;
+    flex-direction: column;
     height: 100vh;
 }
 
 .textNotFound{
+    height: 80%;
+    @include centralization;
     color: #00ff00;
 }
 //Page-not-found
@@ -284,15 +286,26 @@ header nav {
 }
 
 //Drinks
-.addCartProduct{
+.addCartProductBtn{
     border-radius: .3rem;
     border: 1px solid #00ff00;
-    height: 20px;
-    width: 20px;
-    background-color: #00ff00;
-    background-image: url("../assets/imgs/shoppingCartBlack.png");
+    height: 25px;
+    width: 25px;
+    background-color: #000;
+    background-image: url("/src/assets/imgs/shoppingCartGreen.png") !important;
+    transition: 1s;
     background-size: 75% 75%; 
-    background: no-repeat center;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.addCartProductBtn:hover{
+    background-color: #00ff00;
+    transition: 1s;
+    background-image: url("./imgs/shoppingCartBlack.png") !important;
+}
+.addCartProductBtn img{
+    height: 10px;
 }
 .productsList{
     display: grid;
@@ -343,4 +356,23 @@ header nav {
     height: 250px;
     width: 250px;
     margin: 1.5rem 0rem;
+}
+.btcRedirectLink{
+    height: 25px;
+    background-color: #000;
+    border-radius: .25rem;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0rem .5rem;
+    transition: 1s;
+}
+.btcRedirectLink:hover{
+    background-color: #fff;
+    color: #000;
+    padding: 0rem .5rem;
+    transition: 1s;
+}
+.btnsCardRedirect{
+    display: flex;
+    justify-content: space-around;
 }
