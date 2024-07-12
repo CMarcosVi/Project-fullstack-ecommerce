@@ -9,8 +9,8 @@ const cartStore = useCartStore();
 interface Product {
   id: number;
   name: string;
-  img: string;
   type?: string;
+  imgs?: string;
   price: number;
   quantity: number;
 }
@@ -42,7 +42,7 @@ const state = reactive<{ products: Product[] }>({
 });
 
 const addCartStore = (item: Product) => {
-  cartStore.addCart({ type: 'drinks', ...item });
+  cartStore.addCart({ ...item });
 }
 
 onMounted(async () => {
@@ -79,7 +79,7 @@ onMounted(async () => {
     <section class="products">
       <div class="productsList">
         <div v-for="item in state.products" :key="item.id" class="productItem">
-          <img :src="item.img">
+          <img class="imgsProductsHome" :src="`../../src/assets/imgsProducts/${item.imgs}`">          
           <p>{{ item.name }}</p>
           <p>R${{ item.price }}.00</p>
           <div class="btnsCardRedirect">

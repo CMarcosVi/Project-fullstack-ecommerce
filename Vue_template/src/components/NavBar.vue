@@ -11,7 +11,7 @@
             </div>
         </nav>
         <div class="navBarProducts">
-            <RouterLink to="/BestSellers" class="productsLinks">Mais vendidos</RouterLink>
+            <RouterLink to="/" class="productsLinks">Inicio</RouterLink>
             <RouterLink to="/OffersProducts" class="productsLinks">Ofertas</RouterLink>
             <RouterLink to="/GamesAndConsoles" class="productsLinks">Games e console</RouterLink>
             <RouterLink to="/ComputersProducts" class="productsLinks">Computadores</RouterLink>

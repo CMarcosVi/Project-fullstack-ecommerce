@@ -3,7 +3,7 @@
     <NavBar />
     <div>
       <div v-for="(item, index) in products" :key="index">
-        <img :src=item.img>
+        <img :src=item.imgs>
         <p>{{ item.name }}</p>
         <p>{{ item.price }}</p>
         <div>
@@ -24,7 +24,7 @@ import axios from 'axios';
 import {useCartStore} from "../../stores/counter"
 
 // Define uma variável reativa para armazenar os produtos
-const products = ref<{ id: number; name: string; img: string; type?: string; price: number; quantity: number; }[]>([]);
+const products = ref<{ id: number; name: string; imgs: string; type?: string; price: number; quantity: number; }[]>([]);
 const cartStore = useCartStore();
 
 // Função para buscar os dados
@@ -37,7 +37,7 @@ const fetchData = async () => {
   }
 };
 
-const addCartStore = (item : { id: number; name: string; img: string; type?: string; price: number; quantity: number; }) => {
+const addCartStore = (item : { id: number; name: string; imgs: string; type?: string; price: number; quantity: number; }) => {
   cartStore.addCart({type: 'computers', ...item});
 }
 // Chama fetchData quando o componente é montado

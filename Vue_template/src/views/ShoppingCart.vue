@@ -1,16 +1,17 @@
 <template>
     <div>
         <NavBar />
-        <div>
-            <div v-for="(item, index) in items" :key="item.id">
-                <img :src="item.img" />
-                <p>{{ item.name }}</p>
-                <p>{{ item.price }}</p>
+        <div class="Cart">
+            <div class="productCart" v-for="(item, index) in items" :key="item.id">
+                <img class="imgProductCart" :src="`../../src/assets/imgsProducts/${item.imgs}`" />
+                <p class="nameCart" >{{ item.name }}</p>
+                <p class="priceCart">${{ item.price }}.00</p>
                 <button @click="removeItem(index)" class="removeItemBtn">Remover</button>
             </div>
-            <div>
-                <div>{{ totalPrice }}</div>
-                <button @click="clearCart">Limpar Carrinho</button>
+            <div class="totalPriceArea">
+                <p class="totalPriceTitle">Preço total</p>
+                <div class="totalPriceCart">R${{ totalPrice }}.00</div>
+                <button @click="clearCart" class="btnClearCart">Limpar Carrinho</button>
             </div>
             
         </div>
@@ -25,5 +26,6 @@
     const removeItem = products.removeFromCart
     const items = products.detailedItems
     const totalPrice = products.totalPrice
+    console.log(products)
     const clearCart = products.clearCart
 </script>

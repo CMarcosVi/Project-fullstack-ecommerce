@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 interface CartItem {
   id: number;
   name: string;
-  img: string;
+  imgs?: string;
   type?: string;
   price: number;
   quantity: number;
@@ -21,7 +21,7 @@ export const useCartStore = defineStore({
       return state.items.map(item => ({
         id: item.id,
         name: item.name,
-        img: item.img,
+        imgs: item.imgs,
         type: item.type,
         price: item.price,
         quantity: item.quantity,

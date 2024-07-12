@@ -49,7 +49,7 @@
     alcohol_content?: number;
     brand: string;
     price: number;
-    img: string; // Adicionar img como string, se disponível
+    imgs: string; // Adicionar img como string, se disponível
     quantity: number; // Adicionar quantity como número
   }
 
@@ -98,7 +98,7 @@
     id: product.id,
     name: product.name,
     price: product.price,
-    img: '', // Adicione a URL da imagem do produto, se disponível
+    imgs: '', // Adicione a URL da imagem do produto, se disponível
     quantity: 1 // Quantidade inicial ao adicionar ao carrinho
   });
 };
