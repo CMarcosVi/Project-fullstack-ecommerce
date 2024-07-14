@@ -48,7 +48,7 @@ const addProductToCart = (product: {
 }) => {
   const itemToAdd = {
     ...product,
-    type: 'drinks',
+    type: 'drink',
     quantity: 1 // Definindo a quantidade padrão como 1
   };
   cartStore.addCart(itemToAdd); // Adiciona o item ao carrinho

@@ -196,7 +196,7 @@ class UserController {
             res.status(500).json({ error: 'Erro ao buscar produtos de smartphones' });
           }
     }
-    async requestConsolesProduct(req,res){
+    async requestDrinksProduct(req,res){
         const id = req.params.id;
         try{
             if (id >= 13){

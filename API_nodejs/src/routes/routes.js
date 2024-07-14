@@ -13,7 +13,7 @@ routes.post("/recoverpassword",UserController.recoverPassword);
 routes.get("/computersListProducts",UserController.requestComputers);
 //routes.get("/computersListProducts/:id",UserController);
 routes.get("/drinksListProducts",UserController.requestDrinks);
-routes.get("/drinksListProducts/:id",UserController.requestConsolesProduct);
+routes.get("/drinksListProducts/:id",UserController.requestDrinksProduct);
 routes.get("/foodsListProducts",UserController.requestFoods);
 routes.get("/foodsListProducts/:id",UserController.requestFoodProduct);
 routes.get("/gamesAndConsolesListProducts",UserController.requestConsoles);

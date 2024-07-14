@@ -316,7 +316,7 @@ header nav {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .product{
-    height: 400px;
+    height: 45  0px;
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -462,4 +462,96 @@ header nav {
     border-radius: .25rem;
     border-style: none;
     cursor: pointer;
+}
+.screanProductUni{
+    margin-top: 2rem ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.uniProduct{
+    width: 100%;
+    padding: 2rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #0f4;
+    border-bottom: 2px solid #0f4;
+    background-color: #000;
+}
+.containerImgProduct{
+    justify-self: center; /* Alinha o terceiro item horizontalmente no centro */
+    align-self: center;
+}
+.imgsProductsUni{
+    height: 550px;
+    border: 3px solid #0f4;
+    border-radius: .25rem;
+    background-color: #fff;
+}
+.informationsPriceProduct{
+    justify-content: space-around;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+.informationsPriceProduct h1{
+    font-size: 3rem ;
+    color: #fff;
+}
+.price{
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0f4;
+}
+.shippingCompany{
+    color: #0f4;
+    padding: 0rem .25rem;
+}
+.shippingFor{
+    display: flex;
+}
+.btcBuyUni{
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: .5rem;
+    width: 250px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: .5s;
+}
+.btcBuyUni:hover{
+    color: #000;
+    border: #0f4;
+    background-color: #0f4;
+    transition: .5s;
+}
+.addCartProductInProduct{
+    height: 35px;
+    width: 35px;
+    margin-left:1rem ;
+    border-radius: .5rem;
+    border: 3px solid #000;
+    background-color: #0f0;
+    cursor: pointer;
+}
+.addCartProductInProduct img{
+    height: 75%;
+}
+.btnsBuyAddCart{
+    display: flex;
+    align-items: center;
+}
+.infomationsBProducts{
+    font-size: 1rem;
+    border-bottom: 2px solid #0f0;
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    padding: 2rem 4rem;
 }

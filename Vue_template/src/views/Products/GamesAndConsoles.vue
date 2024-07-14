@@ -24,7 +24,7 @@ import axios from 'axios';
 import {useCartStore} from "../../stores/counter"
 
 // Define uma variável reativa para armazenar os produtos
-const products = ref<{ id: number; name: string; imgs: string; type?: string; price: number; quantity: number; }[]>([]);
+const products = ref<{ id: number; name: string; imgs: string; type: string; price: number; quantity: number; }[]>([]);
 const cartStore = useCartStore();
 
 // Função para buscar os dados
@@ -41,13 +41,13 @@ const addProductToCart = (product: {
   id: number;
   name: string;
   imgs: string;
-  type?: string;
+  type: string;
   price: number;
   quantity: number;
 }) => {
   const itemToAdd = {
     ...product,
-    type: 'games',
+    type: 'console',
     quantity: 1 // Definindo a quantidade padrão como 1
   };
   cartStore.addCart(itemToAdd); // Adiciona o item ao carrinho
