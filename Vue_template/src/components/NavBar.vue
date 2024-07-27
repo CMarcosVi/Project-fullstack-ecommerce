@@ -12,12 +12,12 @@
         </nav>
         <div class="navBarProducts">
             <RouterLink to="/" class="productsLinks">Inicio</RouterLink>
-            <RouterLink to="/OffersProducts" class="productsLinks">Ofertas</RouterLink>
+            <!--<RouterLink to="/OffersProducts" class="productsLinks">Ofertas</RouterLink> -->
             <RouterLink to="/GamesAndConsoles" class="productsLinks">Games e console</RouterLink>
-            <RouterLink to="/ComputersProducts" class="productsLinks">Computadores</RouterLink>
+             <!--<RouterLink to="/ComputersProducts" class="productsLinks">Computadores</RouterLink> -->
             <RouterLink to="/SmartPhonesProducts" class="productsLinks">Celulares</RouterLink>
             <RouterLink to="/FoodsProducts" class="productsLinks">Alimentos</RouterLink>
-            <RouterLink to="/KitchenProducts" class="productsLinks">Cozinha</RouterLink>
+             <!--<RouterLink to="/KitchenProducts" class="productsLinks">Cozinha</RouterLink> -->
             <RouterLink to="/DrinksProducts" class="productsLinks">Bebidas</RouterLink>
         </div>
     </header>
