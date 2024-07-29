@@ -21,11 +21,10 @@
 <script setup lang="ts">
     import NavBar from '@/components/NavBar.vue';
     import { useCartStore } from '../stores/counter'
-
     const products = useCartStore();
     const removeItem = products.removeFromCart
     const items = products.detailedItems
     const totalPrice = products.totalPrice
-    console.log(products)
+    console.log(localStorage)
     const clearCart = products.clearCart
 </script>

@@ -53,7 +53,7 @@ onMounted(async () => {
       'gamesAndConsoles',
       'smartPhones'
     ];
-
+    localStorage.getItem('dados')
     const fetchedProducts = await findProducts(categories);
     state.products = fetchedProducts.products;
     console.log(state.products); // Verifique se os dados são exibidos corretamente aqui

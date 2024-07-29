@@ -33,17 +33,31 @@ export const useCartStore = defineStore({
     },
     totalQuantity(state): number {
       return state.items.reduce((total, item) => total + item.quantity, 0);
-    }
+    },
   },
   actions: {
-    addCart(item: CartItem): void {
+    addCart(item: CartItem): void {//feito
+      localStorage.setItem('dados', JSON.stringify(this.items));
       this.items.push(item);
     },
     removeFromCart(index: number): void {
-      this.items.splice(index, 1);
+      this.items = this.items.filter(item => item.id !== index); 
+      console.log(this.items.filter(item => item.id !== index)) 
+      this.saveToLocalStorage();
     },
-    clearCart(): void {
+    clearCart(): void {//feito
+      localStorage.clear();
       this.items = [];
+      localStorage.removeItem('dados');
+    },
+    async gettingValuesStorange(): Promise<void> {//feito
+      const storangeValue = localStorage.getItem('dados');
+      if (storangeValue) {
+        this.items = JSON.parse(storangeValue);
+      }
+    },
+    saveToLocalStorage(): void {//feito
+      localStorage.setItem('dados', JSON.stringify(this.items));
     }
   }
 });
