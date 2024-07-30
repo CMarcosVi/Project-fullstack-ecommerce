@@ -49,7 +49,6 @@ class UserController {
                 return res.status(401).json({ error: "Invalid email or password" });
             }
 
-            console.log(user.name)
             const token = jwt.sign({ emailValue: user.emailValue, role: user.role }, process.env.SECRET_HASH, { expiresIn: '1h' });
             res.status(200).json({name: user.name, email: user.email, password: user.password});
 
@@ -220,6 +219,21 @@ class UserController {
             console.error('Erro ao buscar produtos de smartphones:', error);
             res.status(500).json({ error: 'Erro ao buscar produtos de smartphones' });
           }
+    }
+    async toCompareCookies(req,res){
+        const { email, password } = req.body;
+            
+        console.log(email)
+        if (!email || !password) {
+            return res.status(400).json({ error: "Missing email or password" });
+        }
+
+        const user = await User.findByEmail(email);
+
+        if(password !== user.password){
+            return false
+        }
+        return res.status(200).json({ value: true, name: user.name})
     }
 }
 

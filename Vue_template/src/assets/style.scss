@@ -564,3 +564,25 @@ header nav {
     color: #0f4;
     font-size: 3rem;
 }
+.nameProfile{
+    color: #0f4;
+    font-size: 5rem;
+}
+.emailProfile{
+    color:#fff;
+    font-size: .75rem;
+}
+.userArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+}
+.userArea div{
+    height: 70%;
+    width: 75%;
+    border-radius: .5rem;
+    background-color: #000;
+    background-color: #000;
+}

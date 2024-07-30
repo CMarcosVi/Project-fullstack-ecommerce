@@ -1,6 +1,6 @@
 <template>
     <main class="bodyFormCreate">
-      <form class="formCreateAcc" @submit.prevent="submitForm">
+      <form class="formCreateAcc" @submit="submitForm">
         <h1 class="loginTitle">Login</h1>
         <div class="inputAreaText">
           <label for="email">Email</label>
@@ -50,7 +50,8 @@
       try {
         const response = await axios.post('http://localhost:3000/login', formData.value);
         console.log(response.data);
-        createCookie(response.data.email,response.data.password,1);
+        createCookie('name',response.data.email,1);
+        createCookie('password',response.data.password,1);
       } catch (err) {
         console.error('erro');
         // Add error handling here, such as displaying an error message to the user

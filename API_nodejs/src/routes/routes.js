@@ -7,6 +7,7 @@ const routes = Router();
 routes.get('/', HomeController.index);
 routes.post('/accountCreate', UserController.create);
 routes.post('/login', UserController.login);
+routes.post('/toCompareCookies', UserController.toCompareCookies)
 routes.post('/changePassword', UserController.changePassword);
 routes.post("/recoverpassword",UserController.recoverPassword);
 //routes.get("/bestSellersProducts",UserController.bestSellersProducts);
