@@ -26,19 +26,18 @@ class UserController {
         await User.new(email, password, name);
 
         res.status(200).json({ message: "Tudo OK!" });
-        res.status(200).redirect("/");
     }
     async login(req, res) {
         try {
-            const { emailValue, password } = req.body;
+            const { email, password } = req.body;
             
-            const email = sanitization('email', emailValue);
+            const emailValue = sanitization('email', email);
 
-            if (!email || !password) {
+            if (!emailValue || !password) {
                 return res.status(400).json({ error: "Missing email or password" });
             }
     
-            const user = await User.findByEmail(email);
+            const user = await User.findByEmail(emailValue);
     
             if (!user) {
                 return res.status(401).json({ error: "Invalid email or password" });
@@ -49,9 +48,10 @@ class UserController {
             if (!passwordMatch) {
                 return res.status(401).json({ error: "Invalid email or password" });
             }
-    
-            const token = jwt.sign({ email: user.email, role: user.role }, process.env.SECRET_HASH);
-            res.status(200).json({ message: "Tudo OK!" });
+
+            console.log(user.name)
+            const token = jwt.sign({ emailValue: user.emailValue, role: user.role }, process.env.SECRET_HASH, { expiresIn: '1h' });
+            res.status(200).json({name: user.name, email: user.email, password: user.password});
 
         } catch (error) {
             console.error("Error during login:", error);

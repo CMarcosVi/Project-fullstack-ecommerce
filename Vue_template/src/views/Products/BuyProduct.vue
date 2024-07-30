@@ -47,7 +47,7 @@
       
       <!-- Coloque o resto dos detalhes do produto aqui -->
     </div>
-    <div v-else>
+    <div class="loadingProducts" v-else>
       Carregando dados...
     </div>
   </div>

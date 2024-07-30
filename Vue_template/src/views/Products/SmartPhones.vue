@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <div class="productsList">
+    <div v-if="products" class="productsList">
       <div class="productItem" v-for="(item, index) in products" :key="index" >
           <img class="imgsProductsHome" :src="`../../src/assets/imgsProducts/${item.imgs}`">
           <p>{{ item.name }}</p>
@@ -13,6 +13,9 @@
             <button class="addCartProductBtn" @click.prevent="addProductToCart(item)"></button>
         </div>
         </div>  
+    </div>
+    <div class="loadingProducts" v-else>
+       Carregando dados...
     </div>
   </div>
 </template>
