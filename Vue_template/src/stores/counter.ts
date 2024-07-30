@@ -40,10 +40,12 @@ export const useCartStore = defineStore({
       localStorage.setItem('dados', JSON.stringify(this.items));
       this.items.push(item);
     },
-    removeFromCart(index: number): void {
-      this.items = this.items.filter(item => item.id !== index); 
-      console.log(this.items.filter(item => item.id !== index)) 
-      this.saveToLocalStorage();
+    removeFromCart(index: number): void { //feito
+      if (index >= 0 && index < this.items.length) {
+        this.items.splice(index, 1);
+        this.saveToLocalStorage();  
+      }
+      this.gettingValuesStorange()
     },
     clearCart(): void {//feito
       localStorage.clear();
